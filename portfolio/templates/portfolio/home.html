@@ -1,33 +1,41 @@
-<!DOCTYPE html>
+{% extends "portfolio/base.html" %}
+
 {% load static %}
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block content %}
 
-  <title>Home</title>
-</head>
-<body>
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/Darksider.jpg' %}" class="img-fluid">
+  </div>
+</div>
 
-  
-<h1>Welcome!!</h1>
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Harsh Patel is Commander-in-Chief at TappyCode and lives in Patan,Gujarat
+      😊</h1>
+  </div>
+</div>
 
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for project in project %}
+  <div class="col-lg-4 col-md-6">
 
-<img src="{% static 'portfolio/Darksider.jpg' %}">
-
-
-{% for project in project %}
-
-    <h2>{{ project.title }}</h2>
-    {{ project.description }}<br>
-    <img src='{{ project.image.url }}' width=500 height=420>
     {% if project.url %}
-      <a href='{{ project.url }}'>Link</a>
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" width="340" height="200">
     {% endif %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
 
-{% endfor %}
+  </div>
+  {% endfor %}
+</div>
 
-  
-</body>
-</html>
+{% endblock %}
