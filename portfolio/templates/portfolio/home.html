@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Home</title>
+</head>
+<body>
+
+  
+<h1>Welcome!!</h1>
+
+
+<img src="{% static 'portfolio/Darksider.jpg' %}">
+
+
+{% for project in project %}
+
+    <h2>{{ project.title }}</h2>
+    {{ project.description }}<br>
+    <img src='{{ project.image.url }}' width=500 height=420>
+    {% if project.url %}
+      <a href='{{ project.url }}'>Link</a>
+    {% endif %}
+
+{% endfor %}
+
+  
+</body>
+</html>
