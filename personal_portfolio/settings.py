@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "oer*h8mf-f#2vxj^@#4lf@xj%8#ga!fejcqecp@wrvf0o&r#l#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["hp678286.pythonanywhere.com"]
 
 
 # Application definition
@@ -124,3 +124,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("Look like no file. You must be on production")
